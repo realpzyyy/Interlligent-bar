@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="CSS/heatmian.css" />
+<script type="text/javascript" language="javascript" src="JS/jquery-1.9.1.js"></script>
+<script type="text/javascript" language="javascript" src="JS/main.js"></script>
+
+<title>Lightness</title>
+</head>
+
+<body>
+<!--头部分段-->
+<div class="header-box">
+  <div class="rebutton" onclick="javascript:window.history.go(-1);">
+      <img src="IMG/return.png" style="height:100%; width:100%;" />
+  </div>
+  <div class="titlebox">
+      报告
+  </div>
+  <div class="sharebutton">
+      <img src="IMG/share.png" style="height:100%; width:100%;" />
+  </div>
+</div>
+<!--中间部分-->
+<div class="health" style="display:none">
+    <div class="healthrate"> 
+         <div style="position:absolute; font-size:100%; height:85%; width:90%; left:5%; top:2%;">算法以1到一百的数值表示使用者的健康状态指数。地址数代表平静放松的状态，高数值代表处于兴奋或紧张的状态。系统可以建议用户尽量保持高数值状态，远离亚健康
+         我们的心跳由主神经系统控制。自主神经系统是全身器官的控制中心，展馆新陈代谢、呼吸、心血管、消化、荷尔蒙，以及免疫系统的工作。
+         </div>
+         <span class="healthspan"> 朕知道了</span>
+    </div>
+</div>
+<div class="mian-body" > 
+    <div class="report-topbox">
+         <div class="qipao" id="qipaobox">
+              <img id="iqp" src="IMG/qipao.png" style="height:100%; width:100%;" />
+              <div id="qipaoxinlv" class="qipaoxinlv">
+                   <p id="qpxl" style="font-size:145%; position:absolute; width:50%; top:20%;">50</p>
+                   <p style="position:absolute; top:30%; left:55%; font-size:80%;">bpm</p>
+              </div>
+         </div>
+         <div class="canbox">
+             <div class="progressbox">
+                
+                  <div style="left:0; top:50%;">
+                      <span style="background-color:#dfde61;"></span>
+                      <p style="color:#e8e733">0-60</p>
+                  </div>
+                  <div style="top:50%; left:33%">
+                      <span style="background-color:#64edbb;"></span>
+                      <p style="color:#64edbb">60-100</p>
+                  </div>
+                  <div style="top:50%; left:66%">
+                      <span style="background-color:#9f0005;"></span>
+                      <p style="color:#9f0005">100-200</p>
+                  </div>
+             </div>
+         </div>
+         <div class="repobox">
+             <p id="tishiyu"></p>
+         </div>
+    </div>
+    <div class="report-secondbox">
+        <ul>
+           <li style="top:0; left:0; border-bottom:1px solid #f7f7f7;" id="healthli">
+              <div style="left:20%">
+                  <div class="report-secondbox-firstbox">
+                      <span class="spanone">86</span>
+                      <span class="spantwo">比较健康</span>
+                  </div>
+                  <div class="report-secondbox-secondbox">
+                      <span>健康指数</span>
+                  </div>
+              </div>
+           </li>
+           <li style="top:0; left:50%; border-left:1px solid #f7f7f7">
+              <div style="left:20%">
+                  <div class="report-secondbox-firstbox">
+                      <span class="spanone">一级</span>
+                      <span class="spantwo">优秀</span>
+                  </div>
+                  <div class="report-secondbox-secondbox">
+                      <span>放松程度</span>
+                  </div>
+              </div>
+           </li>
+           <li style="top:50%; left:0; border-right:1px solid #f7f7f7;">
+               <div style="left:20%">
+                  <div class="report-secondbox-firstbox">
+                      <span class="spanone">64</span>
+                      <span class="spantwo">最小值</span>
+                  </div>
+                  <div class="report-secondbox-secondbox">
+                      <span>心率</span>
+                  </div>
+              </div>
+           </li>
+           <li style="top:50%; left:50%; border-top:1px solid #f7f7f7;">
+              <div style="left:20%">
+                  <div class="report-secondbox-firstbox">
+                      <span class="spanone">120</span>
+                      <span class="spantwo">最大值</span>
+                  </div>
+                  <div class="report-secondbox-secondbox">
+                      <span>心率</span>
+                  </div>
+              </div>
+           </li>   
+        </ul>
+    </div>
+</div>
+<!--尾部导航-->
+<div class="footer-box"> </div>
+<script type="text/javascript" language="javascript">
+
+var qipao = localStorage.getItem("avg");
+
+$("#qpxl").text(qipao);
+
+var s1 = "您的心率是";
+
+if(qipao<=60){
+	
+	var k = 1/2;
+	
+	$("#iqp").attr('src','IMG/qipaohuang.png');
+	
+	$("#qipaobox").css('left',(qipao*k)-6+'%');
+	
+	var s3 = "心率较低，建议您通过跑步来锻炼心脏的供氧能力，祝您健康";
+	
+	}
+else if(qipao <100){
+	
+	var m = 75/100;
+	
+	$("#iqp").attr('src','IMG/qipao.png');
+	
+	$("#qipaobox").css('left',m*(qipao-60)+24+'%');
+	
+	var s3 = "属于正常情况，请保持健康的生活方式，祝您身体健康。";
+	}
+else{
+	
+	var n = 30/100 ;
+	
+	$("#iqp").attr('src','IMG/qipaiohong.png');
+	
+	$("#qipaobox").css('left',n*(qipao-100)+54+'%');
+	
+	var s3 = "心率较高，建议您保持平稳健康的心情，适当运动，祝您健康";
+	
+	$("#qpxl").css('font-size','110%');
+	$("#qpxl").css('top','25%');
+	$("#qpxl").css('left','5%');
+	}
+
+$("#tishiyu").text(s1+qipao+"bpm"+s3);
+</script>
+</body>
+</html>

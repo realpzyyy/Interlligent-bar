@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="CSS/heatmian.css" />
+<script type="text/javascript" language="javascript" src="JS/jquery-1.9.1.js"></script>
+<script type="text/javascript" language="javascript" src="JS/echarts.js"></script>
+<script type="text/javascript" language="javascript" src="JS/main.js"></script>
+<title>Lightness</title>
+</head>
+
+<body>
+<!--头部分段-->
+<div class="header-box">
+  <div class="rebutton" onclick="javascript:window.history.go(-1);">
+      <img src="IMG/return.png" style="height:100%; width:100%" />
+  </div>
+  <div class="titlebox">
+      历史记录
+  </div>
+  <div class="sharebutton">
+      <img src="IMG/share.png" style="height:100%; width:100%;" />
+  </div>
+</div>
+<!--中间部分-->
+<div id="xinlv">
+     <div class="mian-body" > 
+          <div id="hisfirst">
+          </div>
+          <div id="hissecond">
+               <div style="width:33%; left:0;">
+                   <p>最高心率</p>
+                   <p style="color:#9f0005; font-family:'PINGFANG REGULAR'">115bpm</p>
+               </div>
+               <div style="width:33%; left:33%;">
+                   <p>平均心率</p>
+                   <p>82bpm</p>
+               </div>
+               <div style="width:34%; left:66%;">
+                   <p>最低心率</p>
+                   <p style="color:#65d5ac;font-family:'PINGFANG REGULAR'">76bpm</p>
+               </div>
+          </div>
+          <div id="histhird">
+               <div style="top:0;">
+                   <p style="top:0; left:0;">02:24</p>
+                   <p style="top:0; right:0;">1bpm</p>
+               </div>
+               <div style="top:20%;">
+                   <p style="top:0; left:0;">02:24</p>
+                   <p style="top:0; right:0;">2bpm</p>
+               </div>
+               <div style="top:40%;">
+                   <p style="top:0; left:0;">02:24</p>
+                   <p style="top:0; right:0;">3bpm</p>
+               </div>
+               <div style="top:60%;">
+                   <p style="top:0; left:0;">02:24</p>
+                   <p style="top:0; right:0;">4bpm</p>
+               </div>
+               <div style="top:80%;">
+                   <p style="top:0; left:0;">02:24</p>
+                   <p style="top:0; right:0;">5bpm</p>
+               </div>
+          </div>
+     </div>
+</div>
+<!--尾部导航-->
+<div class="footer-box"> </div>
+<script type="text/javascript" language="javascript">
+  // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('hisfirst'));
+
+        // 指定图表的配置项和数据
+    var   option = {
+	backgroundColor: '#FFF',
+    
+    tooltip: {
+        trigger: 'axis'
+    },
+    grid: {
+	
+        containLabel: true
+    },
+   
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+		splitLine: { //网格线
+            show: true,
+            lineStyle: {
+                color: ['#b1b1b1'],
+                type: 'solid'
+            }
+        },
+		axisLine:{
+			show:false
+			},
+        data: ['0','3','6','9','12','15','18','21','24h']
+		
+    },
+    yAxis: {
+        type: 'value',
+		splitNumber:4,
+		splitLine: { //网格线
+            show: false
+        },
+		axisLine:{
+			show:false
+			},
+		axisTick:{
+			show:false
+			}
+       
+    },
+    series: [
+        {
+            name:'',
+            type:'line',
+            stack: '总量',
+            data:[80, 85, 86, 90, 84, 92, 93,102,112]
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+		window.onresize  = myChart.resize;
+</script>
+</body>
+</html>

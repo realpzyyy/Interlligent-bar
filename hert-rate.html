@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="CSS/common.css" />
+<link rel="stylesheet" type="text/css" href="CSS/heatmian.css" />
+<script type="text/javascript" language="javascript" src="JS/jquery-1.9.1.js"></script>
+<script type="text/javascript" language="javascript" src="JS/date.js"></script>
+<script type="text/javascript" language="javascript" src="JS/iscroll.js"></script>
+<script type="text/javascript" language="javascript" src="JS/jquery-sparkline.js"></script>
+<script type="text/javascript" language="javascript" src="JS/main.js"></script>
+<script type="text/javascript">
+
+$(function(){
+
+	$('#beginTime').date();
+
+	$('#endTime').date({theme:"datetime"});
+
+});
+
+</script>
+<title>Lightness</title>
+</head>
+
+<body onorientationchange="updateOrientation();">
+<!--头部分段-->
+<div class="header-box">
+  <div class="logo">
+    <ul id="sider-hearder">
+      <li class="selctor-header"><a class="btn1">心率</a></li>
+      <li><a class="btn2">计步</a></li>
+    </ul>
+  </div>
+  <div class="sharebutton">
+      <img src="IMG/share.png" style="height:100%; width:100%;" />
+  </div>
+</div>
+<!--中间部分-->
+<!--心率页面-->
+<div class="loading">
+     <img src="IMG/loading.gif" />
+</div>
+<div id="xinlv">
+<div class="mian-body" > 
+  <!--bodytop部分-->
+  <div id="body-top">
+    <div class="xl-canvas">
+      <div id="hert-rate">
+           <p class="firstp" id="nowxinlv"></p>
+           <p class="secondp">心率  (bpm)</p>
+      </div>
+      <div class="heart-borderone">  </div> 
+      <div class="heart-bordertwo">  </div>
+    </div>
+    <div class="his-canvas" onclick="window.open('history.html','_self')">
+      <div id="history"><p>历史记录</p></div>
+    </div>
+  </div>
+  <!--bodycenter部分-->
+  <div id="body-center">
+    <div class="outbox">
+      <p id="checkp">检查中，请保持平静，避免移动</p>
+    </div>
+  </div>
+  <!--bodybuttom部分-->
+  <div id="body-buttom">
+      <div class="body-buttom-top">
+           <div class="btm-top-box">
+               <p id="time">120(S)</p>
+           </div>
+           <div class="btm-center-box">
+               <p>剩余时间</p>
+           </div>
+      </div>
+      <div class="body-buttom-center">
+      <p><span id="sparkline"></span></p>
+      </div>
+  </div>
+  <div class="testbtmone" id="testbtm">
+       <div class="testbtmbox">
+          <input type="button" id="testbtm-btm" class="testwarmning-css" value="开始检测" />
+       </div>
+  </div>
+  
+</div>
+</div>
+
+<!--计步页面-->
+<div id="jibu">
+<div class="mian-body" > 
+  <!--bodytop部分-->
+   <img src="IMG/jibuback.png" height="100%" width="100%" />
+   <!--时间选择区域-->
+   <div class="timeselect">
+        <div >
+            <span class="leftspan" onclick="increasdate()"><img src="IMG/return.png" style="height:100%; width:100%;"/></span>
+            <label id="beginTime" class="kbtn"></label>
+            <span class="rightspan" onclick="adddate();"><img src="IMG/right.png" style="height:100%; width:100%;"</span>
+        </div>  
+       
+   </div>
+   <!--步数统计区域-->
+   <div class="steps">
+        <div>
+             <p class="stepsum">12345<span style="font-size:35%">(步)</span></p>
+             <p class="warmning">请继续保持</p>
+        </div>
+   </div>
+   <!--消耗统计区域-->
+   <div class="expeng">
+       <div style="left:0;">
+           <p class="sump">9043m</p>
+           <p class="wordp">可绕地球多少圈</p>
+       </div>
+       <div style="left:50%;">
+           <p class="sump">300kcal</p>
+           <p class="wordp">消耗什锦比萨10g</p>
+       </div>
+   </div>
+   <!--分享按钮区域-->
+   <div class="share">
+   <input type="button" class="enjoy-css" value="分享到朋友圈" />
+   </div>
+</div>
+</div>
+<div id="datePlugin"></div>
+<!--尾部导航-->
+<div class="footer-box"> </div>
+<script type="text/javascript" language="javascript">
+
+//让labal框显示当前时间
+var stepdate= new Date();
+document.getElementById("beginTime").innerHTML=stepdate.toLocaleDateString();
+
+</script>
+</body>
+</html>
